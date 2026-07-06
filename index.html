@@ -154,8 +154,29 @@
         <h2 class="section__label" data-fade>Contact</h2>
         <div class="contact__block">
           <p class="contact__line" data-fade>For speaking, advisory and enterprise AI conversations.</p>
+          <form class="contact__form" data-fade action="https://formsubmit.co/soni.jayantika@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Website enquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://jayantikasoni.github.io/?sent=1#contact">
+            <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form__row">
+              <div class="form__field">
+                <label for="cf-name">Name</label>
+                <input id="cf-name" type="text" name="name" required autocomplete="name">
+              </div>
+              <div class="form__field">
+                <label for="cf-email">Email</label>
+                <input id="cf-email" type="email" name="email" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form__field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="btn btn--primary" type="submit">Send</button>
+            <p class="form__sent" id="form-sent" hidden>Thank you. Your message has been sent.</p>
+          </form>
           <p class="contact__links" data-fade>
-            <a href="mailto:soni.jayantika@gmail.com">soni.jayantika@gmail.com</a><br>
             <a href="https://linkedin.com/in/jayantikasoni" target="_blank" rel="noopener">linkedin.com/in/jayantikasoni</a>
           </p>
         </div>

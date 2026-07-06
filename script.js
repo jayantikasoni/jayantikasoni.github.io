@@ -3,6 +3,12 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Show confirmation after form redirect */
+  if (new URLSearchParams(window.location.search).has('sent')) {
+    var sent = document.getElementById('form-sent');
+    if (sent) sent.hidden = false;
+  }
+
   /* Nav hairline on scroll */
   var nav = document.getElementById('nav');
   function onScroll() {
