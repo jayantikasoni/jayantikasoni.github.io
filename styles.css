@@ -471,10 +471,17 @@ section {
   font-family: var(--sans);
 }
 
-.form__sent {
+.form__note {
   margin-top: 16px;
   font-size: 15px;
-  color: var(--accent);
+}
+.form__sent { color: var(--accent); }
+.form__error { color: #9B2C2C; }
+.form__error a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 /* ---------- Footer ---------- */

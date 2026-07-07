@@ -3,10 +3,40 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Show confirmation after form redirect */
-  if (new URLSearchParams(window.location.search).has('sent')) {
-    var sent = document.getElementById('form-sent');
-    if (sent) sent.hidden = false;
+  /* Contact form: submit in the background so the page never navigates away */
+  var form = document.querySelector('.contact__form');
+  if (form) {
+    var sentNote = document.getElementById('form-sent');
+    var errorNote = document.getElementById('form-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      sentNote.hidden = true;
+      errorNote.hidden = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      function reset() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send';
+      }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        mode: 'no-cors'
+      }).then(function () {
+        form.reset();
+        sentNote.hidden = false;
+        reset();
+      }).catch(function () {
+        errorNote.hidden = false;
+        reset();
+      });
+    });
   }
 
   /* Nav hairline on scroll */
