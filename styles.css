@@ -7,6 +7,13 @@
   src: url('./assets/fonts/fraunces-var-latin.woff2') format('woff2');
 }
 @font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./assets/fonts/hankengrotesk-var-latin.woff2') format('woff2');
+}
+@font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400 500;
@@ -121,9 +128,10 @@ section {
 }
 
 .nav__name {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 17px;
+  font-family: 'Hanken Grotesk', var(--sans);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 .nav__name:hover { text-decoration: none; }
@@ -189,12 +197,11 @@ section {
 }
 
 .hero__name {
-  font-family: var(--serif);
-  font-variation-settings: 'opsz' 40;
-  font-weight: 400;
-  font-size: clamp(44px, 7.4vw, 92px);
-  line-height: 1.04;
-  letter-spacing: -0.015em;
+  font-family: 'Hanken Grotesk', var(--sans);
+  font-weight: 550;
+  font-size: clamp(42px, 7vw, 84px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
   max-width: 12ch;
 }
 
