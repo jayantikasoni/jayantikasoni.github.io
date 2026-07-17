@@ -32,7 +32,7 @@
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --container: 1080px;
   --pad-x: clamp(20px, 5vw, 48px);
-  --section-y: clamp(72px, 11vw, 150px);
+  --section-y: clamp(48px, 7vw, 88px);
 }
 
 /* ---------- Base ---------- */
@@ -179,7 +179,7 @@ section {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding-top: clamp(56px, 9vw, 120px);
+  padding-top: clamp(48px, 8vw, 96px);
   padding-bottom: var(--section-y);
 }
 
@@ -515,3 +515,7 @@ button[type="submit"]:disabled {
     transition: none !important;
   }
 }
+
+/* Merged sections */
+.work__stack { display: grid; gap: 48px; }
+.recognition .credentials__row { margin-top: 32px; }
