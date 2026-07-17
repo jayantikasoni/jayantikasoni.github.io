@@ -1,38 +1,41 @@
-/* ---------- Fonts ---------- */
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url('./assets/fonts/fraunces-var-latin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Hanken Grotesk';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('./assets/fonts/hankengrotesk-var-latin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url('./assets/fonts/inter-var-latin.woff2') format('woff2');
-}
-
 /* ---------- Tokens ---------- */
 :root {
-  --bg: #FAF8F4;
+  --bg: #FFFFFF; /* Crisp white */
+  --nav-bg: rgba(255, 255, 255, 0.92);
   --ink: #1C1B18;
   --muted: #6B675F;
-  --accent: #1E4D3B;
+  --accent: #0F766E; /* Teal */
+  --error: #9B2C2C;
   --hairline: #E5E1D8;
-  --serif: 'Fraunces', Georgia, serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --container: 1080px;
   --pad-x: clamp(20px, 5vw, 48px);
+  /* Spacing scale, 4pt base */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Section rhythm. The gap between two sections is twice these values:
+     ~152px between distinct sections, ~120px inside a related group. */
   --section-y: clamp(48px, 7vw, 88px);
+  --section-y-tight: clamp(28px, 4vw, 60px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0A0A0A;
+    --nav-bg: rgba(10, 10, 10, 0.92);
+    --ink: #FAFAFA;
+    --muted: #A0A0A0;
+    --accent: #10B981;
+    --error: #EF4444;
+    --hairline: #2A2A2A;
+  }
 }
 
 /* ---------- Base ---------- */
@@ -85,9 +88,11 @@ section {
 }
 
 /* Hairline separators */
-.proof, .focus, .work, .recognition, .credentials, .contact {
+.proof, .focus, .engagement, .work, .recognition, .contact {
   border-top: 1px solid var(--hairline);
+  padding-top: 40px;
   padding-top: var(--section-y);
+  padding-bottom: 40px;
   padding-bottom: var(--section-y);
 }
 
@@ -111,7 +116,7 @@ section {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 248, 244, 0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition: border-color 200ms ease-out;
@@ -128,7 +133,7 @@ section {
 }
 
 .nav__name {
-  font-family: 'Hanken Grotesk', var(--sans);
+  font-family: var(--sans);
   font-weight: 600;
   font-size: 16px;
   letter-spacing: -0.01em;
@@ -197,10 +202,10 @@ section {
 }
 
 .hero__name {
-  font-family: 'Hanken Grotesk', var(--sans);
-  font-weight: 550;
+  font-family: var(--sans);
+  font-weight: 600;
   font-size: clamp(42px, 7vw, 84px);
-  line-height: 1.06;
+  line-height: 1.3;
   letter-spacing: -0.025em;
   max-width: 12ch;
 }
@@ -215,10 +220,9 @@ section {
 
 .hero__strip {
   margin-top: 24px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--muted);
 }
 
@@ -327,7 +331,7 @@ section {
   font-optical-sizing: auto;
   font-weight: 420;
   font-size: 28px;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 .work__title a { color: var(--ink); }
 .work__title a:hover { color: var(--accent); text-decoration: none; }
@@ -336,10 +340,9 @@ section {
   display: block;
   margin-top: 6px;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--muted);
 }
 
@@ -377,10 +380,16 @@ section {
   white-space: nowrap;
 }
 
-/* ---------- Credentials ---------- */
+.recognition__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+/* ---------- Credentials (Merged) ---------- */
 .credentials__row {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
   color: var(--muted);
   max-width: 62ch;
 }
@@ -476,7 +485,7 @@ section {
   font-size: 15px;
 }
 .form__sent { color: var(--accent); }
-.form__error { color: #9B2C2C; }
+.form__error { color: var(--error); }
 .form__error a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
 button[type="submit"]:disabled {
